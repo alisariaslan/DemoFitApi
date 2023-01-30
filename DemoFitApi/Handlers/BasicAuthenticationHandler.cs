@@ -8,6 +8,7 @@ namespace DemoFitApi.Handlers;
 
 public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
+	private Settings settings= new Settings();
 	public BasicAuthenticationHandler(
 		IOptionsMonitor<AuthenticationSchemeOptions> options,
 		ILoggerFactory logger,
@@ -19,14 +20,14 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 
 	protected override Task<AuthenticateResult> HandleAuthenticateAsync()
 	{
-		if (Settings.enableUserAgent)
+		if (settings.EnableUserAgent)
 		{
 			var agentHeader = Request.Headers["User-Agent"].ToString();
-			if (!agentHeader.Equals(Settings.userAgentKey))
+			if (!agentHeader.Equals(settings.UserAgentKey))
 				return Task.FromResult(AuthenticateResult.Fail("Invalid User Agent"));
 		}
 
-		if(Settings.enableAuthorization)
+		if(settings.EnableAuthorization)
 		{
 			var authHeader = Request.Headers["Authorization"].ToString();
 			if (authHeader != null && authHeader.StartsWith("basic", StringComparison.OrdinalIgnoreCase))
@@ -36,7 +37,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 				System.Console.WriteLine(token);
 				var credentialstring = Encoding.UTF8.GetString(Convert.FromBase64String(token));
 				var credentials = credentialstring.Split(':');
-				if (credentials[0] == Settings.authorization_username && credentials[1] == Settings.authorization_password)
+				if (credentials[0] == settings.Authorization_username && credentials[1] == settings.Authorization_password)
 				{
 					var claims = new[] { new Claim("name", credentials[0]), new Claim(ClaimTypes.Role, "Admin") };
 					var identity = new ClaimsIdentity(claims, "Basic");

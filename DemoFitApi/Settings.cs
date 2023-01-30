@@ -1,15 +1,22 @@
 ﻿namespace DemoFitApi
 {
-	public static class Settings
+	public class Settings
 	{
 
-		public static bool enableAuthorization = false;
-		public static bool enableUserAgent = false;
+		private bool enableAuthorization = false;
+		private bool enableUserAgent = false;
+		private string authorization_username = "demo";
+		private string authorization_password = "demo";
+		private string authorizationKey = "Basic ZGVtbzpkZW1v";
+		private string userAgentKey = "ZGVtb3Byb2plY3Q=";
 
-		public static string authorization_username = "demo";
-		public static string authorization_password = "demo";
+		public bool EnableAuthorization { get { return enableAuthorization; } }
+		public bool EnableUserAgent { get { return enableUserAgent; } }
+		public string Authorization_username { get { return authorization_username; } }
+		public string Authorization_password { get { return authorization_password; } }
+		public string AuthorizationKey { get { return authorizationKey; } }
+		public string UserAgentKey { get { return userAgentKey; } }
 
-		public static string authorizationKey = "Basic ZGVtbzpkZW1v";
-		public static string userAgentKey = "ZGVtb3Byb2plY3Q=";
+
 	}
 }
