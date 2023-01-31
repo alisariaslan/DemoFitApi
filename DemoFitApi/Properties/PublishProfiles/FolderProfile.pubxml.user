@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Projects\DemoFitApi\DemoFitApi\bin\Debug\net7.0\publish\</_PublishTargetUrl>
+    <History>True|2023-01-31T18:17:13.6585322Z;True|2023-01-31T21:16:40.6762949+03:00;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DemoFitDb">
+      <Value>User ID=postgres%3bPassword=a5134ba8%3bHost=localhost%3bPort=5432%3bDatabase=postgres%3bPooling=true%3bConnection Lifetime=0%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

@@ -14,13 +14,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-	builder.Services.AddAuthentication("BasicAuthentication")
+builder.Services.AddAuthentication("BasicAuthentication")
 					.AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>
 					("BasicAuthentication", null);
 	builder.Services.AddAuthorization();
@@ -28,6 +29,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDbService, DbService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

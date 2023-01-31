@@ -7,7 +7,11 @@ namespace DemoFitApi.Services
 		Task<bool> CreateUser(User employee);
 		Task<List<User>> GetUserList();
 		Task<User> UpdateUser(User employee);
-		Task<bool> DeleteUser(int key);
+
+		Task<bool> UpdateLog(int id);
+		Task<bool> DeleteUser_wId(int key);
+
+		Task<bool> DeleteUser_wName(string username);
 
 		Task<User> GetUser_wId(int key);
 

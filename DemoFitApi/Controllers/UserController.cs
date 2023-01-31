@@ -17,7 +17,7 @@ public class UserController : Controller
 	}
 
 	[Authorize]
-	[HttpGet]
+	[HttpGet("all")]
 	public async Task<IActionResult> Get()
 	{
 		var result = await _userservice.GetUserList();
@@ -27,8 +27,8 @@ public class UserController : Controller
 	}
 
 	[Authorize]
-	[HttpGet("{id:int}")]
-	public async Task<IActionResult> GetUser(int id)
+	[HttpGet("id=/{id:int}")]
+	public async Task<IActionResult> GetUser_wId(int id)
 	{
 		var result = await _userservice.GetUser_wId(id);
 		if (result != null)
@@ -37,7 +37,17 @@ public class UserController : Controller
 	}
 
 	[Authorize]
-	[HttpGet("{username}")]
+	[HttpDelete("id=/{id:int}")]
+	public async Task<IActionResult> DeleteUser_wId(int id)
+	{
+		var result = await _userservice.DeleteUser_wId(id);
+		if (result != false)
+			return Ok(result);
+		return NotFound();
+	}
+
+	[Authorize]
+	[HttpGet("name=/{username}")]
 	public async Task<IActionResult> GetUser_wName(string username)
 	{
 		var result = await _userservice.GetUser_wName(username);
@@ -48,12 +58,23 @@ public class UserController : Controller
 	}
 
 	[Authorize]
-	[HttpPost]
+	[HttpDelete("name=/{username}")]
+	public async Task<IActionResult> DeleteUser_wName(string username)
+	{
+		var result = await _userservice.DeleteUser_wName(username);
+		if (result != false)
+			return Ok(result);
+		return NotFound();
+	}
+
+	[Authorize]
+	[HttpPost("new")]
 	public async Task<IActionResult> AddUser([FromBody] User employee)
 	{
-		var result = await _userservice.CreateUser(employee);
-
-		return Ok(result);
+		bool result = await _userservice.CreateUser(employee);
+		if (result)
+			return Ok(result);
+		return BadRequest();
 	}
 
 	[Authorize]
@@ -66,11 +87,16 @@ public class UserController : Controller
 	}
 
 	[Authorize]
-	[HttpDelete("{id:int}")]
-	public async Task<IActionResult> DeleteEmployee(int id)
+	[HttpPut("loggedUserid=/{id:int}")]
+	public async Task<IActionResult> UpdateLog(int id)
 	{
-		var result = await _userservice.DeleteUser(id);
-
-		return Ok(result);
+		bool result = await _userservice.UpdateLog(id);
+		if (result)
+			return Ok(result);
+		return NotFound();
 	}
+
+
+
+
 }
