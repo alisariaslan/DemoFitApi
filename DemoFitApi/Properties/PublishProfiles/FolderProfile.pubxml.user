@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Projects\DemoFitApi\DemoFitApi\bin\Debug\net7.0\publish\</_PublishTargetUrl>
-    <History>True|2023-01-31T18:17:13.6585322Z;True|2023-01-31T21:16:40.6762949+03:00;</History>
+    <History>True|2023-01-31T19:46:00.0238030Z;True|2023-01-31T21:17:13.6585322+03:00;True|2023-01-31T21:16:40.6762949+03:00;</History>
     <LastFailureDetails />
     <TimeStampOfAssociatedLegacyPublishXmlFile />
   </PropertyGroup>
