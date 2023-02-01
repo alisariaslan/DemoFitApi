@@ -78,12 +78,13 @@ public class UserController : Controller
 	}
 
 	[Authorize]
-	[HttpPut]
-	public async Task<IActionResult> UpdateEmployee([FromBody] User employee)
+	[HttpPut("save")]
+	public async Task<IActionResult> UpdateUser([FromBody] User user)
 	{
-		var result = await _userservice.UpdateUser(employee);
-
-		return Ok(result);
+		bool result = await _userservice.UpdateUser(user);
+		if (result)
+			return Ok(result);
+		return NotFound();
 	}
 
 	[Authorize]
