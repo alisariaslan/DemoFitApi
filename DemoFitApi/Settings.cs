@@ -3,8 +3,8 @@
 	public class Settings
 	{
 
-		private bool enableAuthorization = true;
-		private bool enableUserAgent = true;
+		private bool enableAuthorization = false;
+		private bool enableUserAgent = false;
 		private string authorization_username = "demo";
 		private string authorization_password = "demo";
 		private string authorizationKey = "Basic ZGVtbzpkZW1v";
